@@ -1,0 +1,7 @@
+{
+    "ConnectionStrings":
+    {
+
+    },
+    "Greeting" : "A configurable hello 2!"
+}
