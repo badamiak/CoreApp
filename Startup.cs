@@ -11,7 +11,7 @@ namespace CoreApp
 {
     public class Startup
     {
-        public IConfiguration config {get; private set;}
+        // public IConfiguration config {get; private set;}
         public Startup(IHostingEnvironment env)
         {
         }
@@ -20,16 +20,18 @@ namespace CoreApp
         // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<ICoreAppConfiguration, CoreAppConfiguration>();
-            services.AddSingleton<IHomeGreeter, HomeGreeter>();
+            // services.AddSingleton<ICoreAppConfiguration, CoreAppConfiguration>();
+            // services.AddSingleton<IHomeGreeter, HomeGreeter>();
+            services.AddMvcCore();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(
             IApplicationBuilder app, 
             IHostingEnvironment env, 
-            ILoggerFactory loggerFactory,
-            IHomeGreeter homeGreeter)
+            ILoggerFactory loggerFactory
+            // IHomeGreeter homeGreeter
+            )
         {
             loggerFactory.AddConsole();
             var logger = loggerFactory.CreateLogger(nameof(Startup.Configure));
@@ -41,10 +43,9 @@ namespace CoreApp
             {
                 app.UseDeveloperExceptionPage();
             }
-            app.Run(async (context) => 
-            {
-                await context.Response.WriteAsync(homeGreeter.Greeting);
-            });
+
+            app.UseMvcWithDefaultRoute();
+            // app.UseFileServer();
         }
     }
 }

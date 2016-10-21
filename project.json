@@ -8,7 +8,9 @@
   {
     "Microsoft.AspNetCore.Diagnostics": "1.0.*",
     "Microsoft.AspNetCore.Server.Kestrel": "1.0.*",
+    "Microsoft.AspNetCore.StaticFiles": "1.0.*",
     "Microsoft.Extensions.Logging.Console": "1.0.*",
+    "Microsoft.AspNetCore.Mvc": "1.0.*",
     "Microsoft.Extensions.Configuration.FileExtensions": "1.0.*",
     "Microsoft.Extensions.Configuration.Json": "1.0.*",
     "Microsoft.AspNetCore.Owin": "1.0.0-rc2-final",
@@ -24,7 +26,7 @@
       },
       "buildOptions": {
         "copyToOutput": {
-          "include": "config.json"
+          "include": ["config.json", "wwwroot"]
         }
       },
       "imports": "dnxcore50"
